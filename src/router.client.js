@@ -1,7 +1,7 @@
 const history = require('./history')
 const router = require('./router')
 
-console.log('hi====================', history)
+
 
 const render = async (location) => {
   alert(1)
