@@ -1,0 +1,8 @@
+import history from '../../history'
+
+static function handleClick(e) {
+  e.preventDefault()
+  history.navigate(this.input.href)
+}
+
+<a on-click(handleClick) href=input.href>123</a>

@@ -1,0 +1,14 @@
+<${state.component}/>
+
+import '../../router.client'
+import '../test'
+import '../notFound'
+
+class {
+  onCreate({ page }) {
+    console.log('++++++++++++', arguments)
+    this.state = {
+      component: require(`../${page}`)
+    }
+  }
+}

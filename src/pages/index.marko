@@ -17,7 +17,7 @@
     <sample-header title="Lasso + Express"/>
     <div class="container">
       <app-hello name=data.name/>
-      You have ${data.count} new messages!
+      You have ${data.count} new messages!++
       <if(data.colors && data.colors.length)>
         <ul>
           <for|color| of=data.colors>
@@ -28,6 +28,8 @@
       <else>
         <div>No colors!</div>
       </else>
+      <router page=input.page/>
+
     </div>
     <lasso-body/>
     <!--

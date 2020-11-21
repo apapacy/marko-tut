@@ -21,10 +21,14 @@
     "@lasso/marko-taglib": "^1.0.15",
     "browser-refresh": "^1.7.2",
     "browser-refresh-taglib": "^1.0.3",
+    "deep-equal": "^2.0.4",
     "express": "^4.9.4",
+    "history": "^5.0.0",
     "lasso": "^3.3.1",
     "lasso-marko": "^2.4.8",
-    "marko": "^4.22.5"
+    "marko": "^4.22.5",
+    "universal-router": "^9.0.1",
+    "url-parse": "^1.4.7"
   },
   "private": true
 }

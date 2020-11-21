@@ -3,6 +3,7 @@ require('marko/express'); //enable res.marko
 
 var express = require('express');
 
+var router = require('./src/router');
 var indexTemplate = require('./src/pages/index.marko');
 var app = express();
 var port = 8080;
@@ -23,9 +24,15 @@ require('lasso').configure({
 
 app.use(require('lasso/middleware').serveStatic());
 
-app.get('/', function(req, res) {
+app.get('/*', async function(req, res) {
+
+    const { page, data } = await router.resolve(req.originalUrl);
+    const component = require(`./src/components/${page}`);
     res.marko(indexTemplate, {
             name: 'Frank',
+            page,
+            data,
+            component,
             count: 30,
             colors: ['red', 'green', 'blue']
         });
