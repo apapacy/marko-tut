@@ -2,7 +2,7 @@ require('marko/node-require').install();
 require('marko/express'); //enable res.marko
 
 var express = require('express');
-
+var api = require('./api/routes');
 var router = require('./src/router');
 var indexTemplate = require('./src/pages/index.marko');
 var app = express();
@@ -23,6 +23,8 @@ require('lasso').configure({
 
 
 app.use(require('lasso/middleware').serveStatic());
+
+app.use('/api', api);
 
 app.get('/*', async function(req, res) {
 
