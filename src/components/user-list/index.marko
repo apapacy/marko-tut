@@ -1,0 +1,10 @@
+<ul>
+  <for|user, index| of=input.data.users>
+    <li key=user.id>
+      ${user.name}
+      <a-tag href=`/users/${user.id}`>
+        see detail
+      </a-tag>
+    </li>
+  </for>
+</ul>

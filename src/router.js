@@ -1,22 +1,21 @@
-const UniversalRouter = require('universal-router')
+const axios = require('axios');
+const UniversalRouter = require('universal-router');
+
 module.exports = new UniversalRouter([
-  { path: '/test', action: (req) => ({ page: 'test', data: { req, action: 'test' } }) },
-  { path: '/sign-in', action: () => ({ page: 'login', data: { action: 'sign-in' } }) },
-  { path: '/sign-up', action: () => ({ page: 'login', data: { action: 'sign-up' } }) },
-  { path: '/sign-out', action: (req) => ({ page: 'home', data: { req, action: 'home', 'sign-out': true } }) },
-  { path: '/settings', action: () => ({ page: 'settings', data: { action: 'settings' } }) },
   { path: '/home', action: (req) => ({ page: 'home', data: { req, action: 'home' } }) },
-  { path: '/page/:page', action: (req) => ({ page: 'home', data: { req, action: 'home' } }) },
-  { path: '/feed', action: (req) => ({ page: 'home', data: { req, action: 'feed' } }) },
-  { path: '/feed/page/:page', action: (req) => ({ page: 'home', data: { req, action: 'feed' } }) },
-  { path: '/tags/:tag', action: (req) => ({ page: 'home', data: { req, action: 'tag' } }) },
-  { path: '/tags/:tag/page/:page', action: (req) => ({ page: 'home', data: { req, action: 'tag' } }) },
-  { path: '/article/:article', action: (req) => ({ page: 'article', data: { req, action: 'article' } }) },
-  { path: '/edit/:article', action: (req) => ({ page: 'editor', data: { req, action: 'edit' } }) },
-  { path: '/new-post', action: (req) => ({ page: 'editor', data: { req, action: 'new-post' } }) },
-  { path: '/author/:author', action: (req) => ({ page: 'profile', data: { req, action: 'author' } }) },
-  { path: '/author/:author/page/:page', action: (req) => ({ page: 'profile', data: { req, action: 'author' } }) },
-  { path: '/favorited/:author', action: (req) => ({ page: 'profile', data: { req, action: 'favorited' } }) },
-  { path: '/favorited/:author/page/:page', action: (req) => ({ page: 'profile', data: { req, action: 'favorited' } }) },
+  {
+    path: '/user-list',
+    action: async (req) => {
+      const {data: users} = await axios.get('http://localhost:8080/api/users');
+      return { page: 'user-list', data: { req, users, action: 'user-list' } };
+    }
+  },
+  {
+    path: '/users/:id',
+    action: async (req) => {
+      const {data: user} = await axios.get(`http://localhost:8080/api/users/${req.params.id}`);
+      return { page: 'user', data: { req, user, action: 'user' } };
+    }
+  },
   { path: '(.*)', action: () => ({ page: 'notFound', data: { action: 'not-found' } }) }
 ])

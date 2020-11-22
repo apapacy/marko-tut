@@ -1,6 +1,5 @@
 <layout page=input.page>
-  <${state.component} test='test1'/>
-  <${state.component} test='test2'/>
+  <${state.component} data=state.data/>
 </layout>
 
 
@@ -10,16 +9,18 @@ import history from '../../history'
 import router from '../../router'
 
 class {
-  onCreate({ page }) {
+  onCreate({ page, data }) {
     console.log('on create router')
     this.state = {
-      component: require(`../${page}/index.marko`)
+      component: require(`../${page}/index.marko`),
+      data
     }
     history.listen(this.handle.bind(this))
   }
 
   async handle({location}) {
     const route = await router.resolve(location);
+    this.state.data = route.data;
     this.state.component = require(`../${route.page}/index.marko`);
   }
 }

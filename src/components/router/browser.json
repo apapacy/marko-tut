@@ -2,6 +2,8 @@
     "dependencies": [
         "../test/index.marko",
         "../home/index.marko",
-        "../notFound/index.marko"
+        "../notFound/index.marko",
+        "../user-list/index.marko",
+        "../user/index.marko"
     ]
 }
