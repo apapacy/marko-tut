@@ -1,4 +1,8 @@
-<${state.component}></>
+<layout page=input.page>
+  <${state.component} test='test1'/>
+  <${state.component} test='test2'/>
+</layout>
+
 
 
 import history from '../../history'
@@ -7,7 +11,7 @@ import router from '../../router'
 
 class {
   onCreate({ page }) {
-    console.log()
+    console.log('on create router')
     this.state = {
       component: require(`../${page}/index.marko`)
     }
