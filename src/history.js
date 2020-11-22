@@ -5,7 +5,6 @@ const isNode = new Function('try {return !!process.env;}catch(e){return false;}'
 let history
 
 if (!isNode()) {
-  console.log('client++++++++++++++++++')
   history = createBrowserHistory()
   history.navigate = function (path, state) {
     const parsedPath = parse(path)
@@ -21,7 +20,6 @@ if (!isNode()) {
     return history.push(...[path, state, ...args])
   }
 } else {
-  console.log('server---------------------------')
   history = {}
   history.navigate = function () {}
   history.listen = function () {}

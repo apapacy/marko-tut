@@ -2,15 +2,11 @@
   <${state.component} data=state.data/>
 </layout>
 
-
-
 import history from '../../history'
-
 import router from '../../router'
 
 class {
   onCreate({ page, data }) {
-    console.log('on create router')
     this.state = {
       component: require(`../${page}/index.marko`),
       data

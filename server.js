@@ -27,16 +27,10 @@ app.use(require('lasso/middleware').serveStatic());
 app.use('/api', api);
 
 app.get('/*', async function(req, res) {
-
     const { page, data } = await router.resolve(req.originalUrl);
-    const component = require(`./src/components/${page}`);
     res.marko(indexTemplate, {
-            name: 'Frank',
             page,
             data,
-            component,
-            count: 30,
-            colors: ['red', 'green', 'blue']
         });
 });
 
