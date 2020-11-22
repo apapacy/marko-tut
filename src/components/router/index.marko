@@ -2,14 +2,17 @@
   <${state.component} data=state.data/>
 </layout>
 
+
+
 import history from '../../history'
+
 import router from '../../router'
 
 class {
-  onCreate({ component, data }) {
+  onCreate({ page, data }) {
     console.log('on create router')
     this.state = {
-      component: component,
+      component: require(`../${page}/index.marko`),
       data
     }
     history.listen(this.handle.bind(this))
@@ -18,6 +21,6 @@ class {
   async handle({location}) {
     const route = await router.resolve(location);
     this.state.data = route.data;
-    this.state.component = route.component;
+    this.state.component = require(`../${route.page}/index.marko`);
   }
 }

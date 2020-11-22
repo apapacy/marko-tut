@@ -28,9 +28,11 @@ app.use('/api', api);
 
 app.get('/*', async function(req, res) {
 
-    const { component, data } = await router.resolve(req.originalUrl);
+    const { page, data } = await router.resolve(req.originalUrl);
+    const component = require(`./src/components/${page}`);
     res.marko(indexTemplate, {
             name: 'Frank',
+            page,
             data,
             component,
             count: 30,
