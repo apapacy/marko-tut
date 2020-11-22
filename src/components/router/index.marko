@@ -1,8 +1,5 @@
 <${state.component}></>
 
-import '../test'
-import '../notFound'
-import '../home'
 
 import history from '../../history'
 
@@ -12,13 +9,13 @@ class {
   onCreate({ page }) {
     console.log()
     this.state = {
-      component: require(`../${page}`)
+      component: require(`../${page}/index.marko`)
     }
     history.listen(this.handle.bind(this))
   }
 
   async handle({location}) {
     const route = await router.resolve(location);
-    this.state.component = require(`../${route.page}`);
+    this.state.component = require(`../${route.page}/index.marko`);
   }
 }

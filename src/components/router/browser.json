@@ -1,0 +1,7 @@
+{
+    "dependencies": [
+        "../test/index.marko",
+        "../home/index.marko",
+        "../notFound/index.marko"
+    ]
+}
