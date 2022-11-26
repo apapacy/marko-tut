@@ -1,1 +1,14 @@
-<p>Not found</p>
+import store from '../../store';
+import pages from '../../pages'
+
+<p>Not found ${input.store.value}</p>
+
+
+class {
+    onMount() {
+        store.subscribe(() => {
+            console.log(store.getState())
+            this.forceUpdate();
+        });
+    }
+}

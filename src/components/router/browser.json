@@ -4,6 +4,7 @@
         "../home/index.marko",
         "../notFound/index.marko",
         "../user-list/index.marko",
-        "../user/index.marko"
+        "../user/index.marko",
+        "../../pages/index.marko"
     ]
 }

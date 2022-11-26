@@ -1,22 +1,26 @@
-<layout>
-  <${state.component} data=state.data/>
+<layout on-increment('dispatch', 'INCREMENT')>
+  <${state.component} store=store.getState() data=state.datam  />
 </layout>
 
 import history from '../../history'
 import router from '../../router'
+import store from '../../store';
 
 class {
   onCreate({ page, data }) {
     this.state = {
       component: require(`../${page}/index.marko`),
-      data
+      data,
     }
     history.listen(this.handle.bind(this))
   }
-
   async handle({location}) {
     const route = await router.resolve(location);
     this.state.data = route.data;
     this.state.component = require(`../${route.page}/index.marko`);
+  }  
+  dispatch(type) {
+      store.dispatch({ type: type });
   }
+
 }

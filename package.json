@@ -19,6 +19,7 @@
   "homepage": "https://github.com/marko-js/examples",
   "dependencies": {
     "@lasso/marko-taglib": "^1.0.15",
+    "@marko-tags/context": "^2.2.2",
     "axios": "^0.21.0",
     "browser-refresh": "^1.7.2",
     "browser-refresh-taglib": "^1.0.3",
@@ -28,6 +29,7 @@
     "lasso": "^3.3.1",
     "lasso-marko": "^2.4.8",
     "marko": "^4.22.5",
+    "redux": "^4.2.0",
     "universal-router": "^9.0.1",
     "url-parse": "^1.4.7"
   },

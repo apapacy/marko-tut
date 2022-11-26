@@ -1,13 +1,47 @@
-<div>
-    <header>
-      <nav>
-        <a-tag href="/home">Home</a-tag> |
-        <a-tag href="/user-list">Users List</a-tag> |
-        <a-tag href="/room">Contact</a-tag>
-      </nav>
-    </header>
-    <${input.renderBody}/>
-    <footer>
-      I'm here to stay
-    </footer>
+import store from '../../store';
+
+
+<div on-click("increment")>
+  <header>
+    <nav>
+      <a-tag href="/home">Home</a-tag> |
+      <a-tag href="/user-list">Users List</a-tag> |
+      <a-tag href="/room">Contact</a-tag>
+    </nav>
+  </header>
+  <${input.renderBody}/>
+  <footer>
+    I'm here to stay!
+  </footer>
 </div>
+
+
+class {
+  onMount() {
+      store.subscribe(() => {
+          this.forceUpdate();
+      });
+  }
+  dispatch(type) {
+      store.dispatch({ type: type });
+  }
+  handleClick(e, ct) {
+  }
+  increment() {
+      alert('increment')
+      this.emit('increment');
+  }
+  decrement() {
+      this.emit('decrement');
+  }
+  incrementIfOdd() {
+      if (this.input.value % 2 !== 0) {
+          this.increment();
+      }
+  }
+  incrementAsync() {
+      setTimeout(() => {
+          this.increment();
+      }, 1000);
+  }
+}
